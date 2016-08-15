@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en-US">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Issues</title>
+</head>
+<body>
+<table th:action="@{issues/fetch}">
+    <!--/*@thymesVar id="issue" type="domain.models.entity.Issue"*/-->
+    <tr th:each="issue : ${issues}" th:text="${issue.getName()} + ' ' + ${issue.getId()}"></tr>
+</table>
+</body>
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Title</title>
+</head>
+<body>
+<!--/*@thymesVar id="project" type="domain.models.entity.Project"*/-->
+<form th:action="@{/project/register}"
+      th:object="${project}"
+      method="post">
+
+    Enter a Project Name:
+    <br/>
+    <input type="text"
+           th:field="*{name}"/>
+    <br/>
+
+    Select State: <br/>
+
+        <li th:each="state : ${states}">
+            <!--/*@thymesVar id="state" type="domain.models.entity.state.ApplicationState"*/-->
+            <input type="checkbox" th:field="*{applicationStates}" th:value="${state.id}" th:text="${state.name}">
+            </input>
+        </li>
+
+    <br/>
+
+    Select Type: <br/>
+    <select th:field="*{type}">
+        <option th:each="type : ${types}"
+                th:value="${type.getId()}"
+                th:text="${type.getName()}">
+        </option>
+    </select>
+
+    <!--<li th:each="type : ${type}">-->
+        <!--&lt;!&ndash;/*@thymesVar id="type" type="domain.models.entity.Type"*/&ndash;&gt;-->
+        <!--<input type="checkbox" th:field="*{type}" th:value="${type.id}" th:text="${type.name}">-->
+        <!--</input>-->
+    <!--</li>-->
+    <br/>
+
+    Select Project Manager: <br/>
+    <select th:field="*{projectManager}">
+        <!--/*@thymesVar id="user" type="domain.models.entity.User"*/-->
+        <!--/*@thymesVar id="users" type="java.lang.Iterable<UserDto>"*/-->
+        <option th:each="user : ${users}"
+                th:value="${user.id}"
+                th:text="${user.username}"></option>
+    </select>
+
+    <br/>
+    Select Assignees to Add:
+    <li th:each="user : ${users}">
+        <!--/*@thymesVar id="user" type="domain.models.entity.User"*/-->
+        <input type="checkbox" th:field="*{users}" th:value="${user.id}" th:text="${user.username}"/>
+    </li>
+
+    <button type="submit" name="Submit">Submit</button>
+</form>
+</body>
+</html>

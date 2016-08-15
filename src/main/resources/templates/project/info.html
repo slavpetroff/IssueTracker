@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Project's Info</title>
+</head>
+<body>
+<!--/*@thymesVar id="project" type="domain.models.entity.Project"*/-->
+<table border="5" cellpadding="5" th:object="${project}">
+    <thead>
+    <tr>
+        <td th:text="'ID: '"></td>
+        <td th:text="'Name: '"></td>
+        <td th:text="'Project Manager: '"></td>
+        <td th:text="'Application States: '"></td>
+        <td th:text="'Local States: '"></td>
+        <td th:text="'Issues: '"></td>
+        <td th:text="'Users: '"></td>
+        <td th:text="'Type: '"></td>
+    </tr>
+
+    <tr>
+        <!--/*@thymesVar id="issue" type="domain.models.entity.Issue"*/-->
+        <td th:text="${project.id}"></td>
+        <td th:text="${project.name}"></td>
+        <td th:text="${project.getProjectManager().getUsername()}"></td>
+
+        <td th:each="state : ${project.getApplicationStates()}"
+            th:utext="${state.name} + '&lt;br /&gt;'"></td>
+
+        <td th:each="state : ${project.getLocalStates()}"
+            th:utext="${state.name} + '&lt;br /&gt;'"></td>
+
+        <td th:each="issue : ${project.getIssues()}"
+            th:utext="${issue.name} + '&lt;br /&gt;'"></td>
+
+        <td th:each="user : ${project.getUsers()}"
+            th:utext="${user.getUsername()} + '&lt;br /&gt;'"></td>
+
+        <td th:text="${project.getType().name}"></td>
+    </tr>
+    </thead>
+</table>
+</body>
+</html>

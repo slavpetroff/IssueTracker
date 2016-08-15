@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en-US">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Users</title>
+</head>
+<body>
+<table>
+    <!--/*@thymesVar id="user" type="domain.models.entity.User"*/-->
+    <tr th:each="user : ${users}" th:text="${user.getUsername()} + ' ' + ${user.getId()}"></tr>
+</table>
+</body>
+</html>

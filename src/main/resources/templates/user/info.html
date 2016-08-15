@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>User's Info</title>
+</head>
+<body>
+<!--/*@thymesVar id="user" type="domain.models.entity.User"*/-->
+<table border="5" cellpadding="5" th:object="${user}">
+    <thead>
+    <tr>
+        <td th:text="'ID: '"></td>
+        <td th:text="'Username: '"></td>
+        <td th:text="'Issues: '"></td>
+        <td th:text="'Projects: '"></td>
+        <td th:text="'Managed Projects: '"></td>
+    </tr>
+
+    <tr>
+        <!--/*@thymesVar id="issue" type="domain.models.entity.User"*/-->
+        <td th:text="${user.getId()}"></td>
+        <td th:text="${user.getUsername()}"></td>
+        <td>
+            <a th:each="issue : ${user.getIssues()}"
+               th:text="${issue.getName()}"
+               th:href="|@{/issue/}${issue.id}/info|"></a>
+        </td>
+
+        <td>
+            <a th:each="project : ${user.getProjects()}"
+               th:text="${project.getName()}"
+               th:href="|@{/project/}${project.id}/info|"></a>
+        </td>
+
+        <td>
+            <a th:each="project : ${user.getManagedProjects()}"
+               th:text="${project.getName()}"
+               th:href="|@{/project/}${project.id}/info|"></a>
+        </td>
+
+    </tr>
+    </thead>
+</table>
+</body>
+</html>

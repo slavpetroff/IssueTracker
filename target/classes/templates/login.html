@@ -11,6 +11,7 @@
 <div class="login-form">
     <h1>Sign In</h1>
     <h2><a th:href="@{/user/register}">Create Account</a></h2>
+
     <form th:action="@{/user/login}" method="post">
         Please, enter your username:<br/>
         <input type="text" name="username"/>

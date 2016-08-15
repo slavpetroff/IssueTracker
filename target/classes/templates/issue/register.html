@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Register An Issue</title>
+</head>
+<body>
+<!--/*@thymesVar id="issue" type="domain.models.entity.Issue"*/-->
+<form th:action="|@{/issue/register/}${projectId}|" th:object="${issue}" method="post">
+    <input type="hidden" th:username="${_csrf.parameterName}" th:value="${_csrf.token}"/>
+    Please, enter issue's name:<br/>
+    <input type="text" th:field="*{name}"/>
+
+    <br/>Please choose the assignees:<br/>
+    <li th:each="user : ${users}">
+        <!--/*@thymesVar id="user" type="domain.models.entity.User"*/-->
+        <input type="checkbox" th:field="*{user}" th:value="${user.id}" th:text="${user.username}"/>
+    </li>
+
+    <br/>Please enter a description:<br/>
+    <input type="text" th:field="*{description}"/>
+
+    <br/>Please choose the state for the issue:<br/>
+    <select th:field="*{applicationState}">
+        <!--/*@thymesVar id="state" type="domain.models.entity.state.AbstractState"*/-->
+        <option th:each="state : ${states}" th:value="${state.id}" th:text="${state.name}"></option>
+    </select>
+
+    <br/>Please, choose the type:<br/>
+    <li th:each="type : ${type}">
+        <!--/*@thymesVar id="type" type="domain.models.entity.Type"*/-->
+        <input type="checkbox" th:field="*{type}" th:value="${type.id}" th:text="${type.name}"/>
+    </li>
+
+    <button type="submit">Submit</button>
+</form>
+</body>
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Fetch Project's Issues</title>
+</head>
+<body>
+<div th:unless="${#lists.isEmpty(issues)}">
+    <table border="4" cellpadding="5">
+        <!--/*@thymesVar id="issues" type="java.util.Set<domain.models.entity.Issue>"*/-->
+        <thead>
+        <tr>
+            <td th:text="'Name:'"></td>
+            <td th:text="'ID: '"></td>
+            <td th:text="'Assignee: '"></td>
+        </tr>
+
+        <tr th:each="issue : ${issues}">
+            <td th:text="${issue.getName()}"></td>
+            <td th:text="${issue.getId()}"></td>
+            <a th:text="${issue.getUser().getUsername()}"
+               th:href="|@{/user/}${issue.getUser().getId()}/info|"></a>
+        </tr>
+        </thead>
+    </table>
+</div>
+</body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Title</title>
+</head>
+<body>
+
+<div>
+    <a th:href="@{/project/register}"
+       th:text="'Add new project'"></a>
+    <br/>
+</div>
+
+<div th:each="project : ${projects}">
+    <!--/*@thymesVar id="project" type="domain.models.entity.Project"*/-->
+    <br/>
+    <strong th:text="${project.getName()}"></strong>
+    <br/>
+
+    <a th:if="${#lists.size(project.getIssues()) == 0}" th:text="'No issues :)'"></a>
+
+    <a th:each="issue : ${project.getIssues()}"
+       th:text="${issue.getName()}"
+       th:href="|@{/issue/}${issue.getId()}/info|"></a>
+
+    <br/>
+    <br/>
+    <strong th:text="'Assignees: '"></strong>
+
+    <br/>
+    <a th:each="user : ${project.getUsers()}"
+       th:text="${user.getUsername()}"
+       th:href="|@{/user/}${user.getId()}/info|"></a>
+</div>
+</body>
+</html>

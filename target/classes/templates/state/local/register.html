@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Register a Local State</title>
+</head>
+<body>
+
+
+<!--/*@thymesVar id="state" type="domain.models.entity.state.LocalState"*/-->
+<form th:action="|@{/state}/local/register/${projectId}|"
+      th:object="${state}"
+      method="post">
+
+    Please enter state's name:<br/>
+    <input type="text"
+           th:value="${state.name}"
+           th:field="*{name}"/>
+    <br/>
+    <button type="submit">Submit</button>
+</form>
+
+
+</body>
+</html>

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Register a Type</title>
+</head>
+<body>
+
+<!--/*@thymesVar id="type" type="domain.models.entity.Type"*/-->
+<form th:action="|@{/type/}/register/project/${projectId}|"
+      th:object="${type}"
+      method="post">
+
+    Please enter type's name:<br/>
+    <input type="text"
+           th:value="${type.name}"
+           th:field="*{name}"/>
+    <br/>
+    <button type="submit">Submit</button>
+</form>
+
+
+</body>
+</html>

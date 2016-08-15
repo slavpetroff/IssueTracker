@@ -21,6 +21,8 @@
         <td th:text="${user.getId()}"></td>
         <td th:text="${user.getUsername()}"></td>
         <td>
+            <a th:if="${#lists.size(user.getIssues()) == 0}" th:text="'No issues :)'"></a>
+
             <a th:each="issue : ${user.getIssues()}"
                th:text="${issue.getName()}"
                th:href="|@{/issue/}${issue.id}/info|"></a>

@@ -30,12 +30,6 @@ public class UserController {
         return "user/login";
     }
 
-    @GetMapping("/loginFailed")
-    public String failedLogin() {
-
-        return "error/loginFailed";
-    }
-
     @GetMapping("/fetch")
     public String fetchUsers(Model model) {
         model.addAttribute("users", this.userService.findAll());
@@ -53,7 +47,7 @@ public class UserController {
 
     @GetMapping("/register")
     public String register(Model model) {
-        model.addAttribute("user", new UserDto());
+        model.addAttribute("user", new User());
 
         return "user/register";
     }

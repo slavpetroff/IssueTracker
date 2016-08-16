@@ -15,9 +15,13 @@
 <div th:each="project : ${projects}">
     <!--/*@thymesVar id="project" type="domain.models.entity.Project"*/-->
     <br/>
+<<<<<<< HEAD
     <strong>
         <a th:href="|@{/project/}${project.getId()}/info|" th:text="${project.getName()}"></a>
     </strong>
+=======
+    <strong th:text="${project.getName()}"></strong>
+>>>>>>> 9a6d7288ad051706a390947a7bc890f879a4ab42
     <br/>
 
     <a th:if="${#lists.size(project.getIssues()) == 0}" th:text="'No issues :)'"></a>

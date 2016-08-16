@@ -33,6 +33,7 @@ public class IssueController {
     @GetMapping("/fetch")
     public String fetchIssues(Model model) {
         model.addAttribute("issues", this.issueService.findAll());
+        model.addAttribute("projects", this.projectService.findAll());
 
         return "issue/fetch";
     }

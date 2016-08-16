@@ -1,13 +1,50 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" lang="en-US">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8"/>
-    <title>Issues</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script th:src="@{/addNewIssue.js}"></script>
+    <title>Issue</title>
 </head>
 <body>
-<table th:action="@{issues/fetch}">
+
+<div th:each="issue : ${issues}">
+    <!--/*@thymesVar id="project" type="domain.models.entity.Project"*/-->
+    <br/>
+    <strong>
+        <a th:href="|@{/issue/}${issue.getId()}/info|" th:text="${issue.getName()}"></a>
+    </strong>
+    <br/>
+
     <!--/*@thymesVar id="issue" type="domain.models.entity.Issue"*/-->
-    <tr th:each="issue : ${issues}" th:text="${issue.getName()} + ' ' + ${issue.getId()}"></tr>
-</table>
+    <a th:text="${issue.getUser().getUsername()}" th:href="|@{/user/}${issue.getUser().getId()}/info|"></a>
+
+    <a th:text="${issue.getProject().getName()}" th:href="|@{/project/}${issue.getProject().getId()}/info|"></a>
+
+    <a th:text="${issue.getDescription()}"></a>
+
+    <a th:text="${issue.getCurrentState().getName()}"></a>
+
+    <a th:text="${issue.getType().getName()}"></a>
+</div>
+
+<div>
+    <form id="regForm" th:action="@{/issue/register/projectId}">
+        <select id="select">
+            <option id="option"
+                    th:each="project :${projects}"
+                    th:text="${project.getName()}"
+                    th:value="${project.getId()}"></option>
+        </select>
+
+        <button type="submit" id="button">Add new Issue:</button>
+    </form>
+
+
+    <div id="buttonAdd">
+    </div>
+    <br/>
+
+</div>
 </body>
 </html>

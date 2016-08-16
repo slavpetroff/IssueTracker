@@ -14,7 +14,7 @@
     <br/>Please choose the assignees:<br/>
     <li th:each="user : ${users}">
         <!--/*@thymesVar id="user" type="domain.models.entity.User"*/-->
-        <input type="checkbox" th:field="*{user}" th:value="${user.id}" th:text="${user.username}"/>
+        <input type="checkbox" th:field="*{user}" th:value="${user.getId()}" th:text="${user.getUsername()}"/>
     </li>
 
     <br/>Please enter a description:<br/>
@@ -22,16 +22,17 @@
 
     <br/>Please choose the state for the issue:<br/>
     <select th:field="*{applicationState}">
-        <!--/*@thymesVar id="state" type="domain.models.entity.state.AbstractState"*/-->
-        <option th:each="state : ${states}" th:value="${state.id}" th:text="${state.name}"></option>
+
+        <!--/*@thymesVar id="appState" type="domain.models.entity.state.ApplicationState"*/-->
+        <option th:each="appState : ${states}" th:value="${appState.getId()}" th:text="${appState.getName()}"></option>
     </select>
 
     <br/>Please, choose the type:<br/>
-    <li th:each="type : ${type}">
-        <!--/*@thymesVar id="type" type="domain.models.entity.Type"*/-->
-        <input type="checkbox" th:field="*{type}" th:value="${type.id}" th:text="${type.name}"/>
-    </li>
+    <select th:field="*{type}">
+        <option th:each="type : ${types}" th:value="${type.getId()}" th:text="${type.getName()}"></option>
+    </select>
 
+    <br/>
     <button type="submit">Submit</button>
 </form>
 </body>

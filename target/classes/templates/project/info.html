@@ -5,6 +5,11 @@
     <title>Project's Info</title>
 </head>
 <body>
+
+<div>
+    <a th:text="'Add new Issue'" th:href="|@{/issue/register/}${project.getId()}|"></a>
+</div>
+
 <!--/*@thymesVar id="project" type="domain.models.entity.Project"*/-->
 <table border="5" cellpadding="5" th:object="${project}">
     <thead>

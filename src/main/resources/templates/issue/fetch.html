@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-<<<<<<< HEAD
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8"/>
@@ -9,7 +8,6 @@
 </head>
 <body>
 
-<!--/*@thymesVar id="issues" type="java.util.Set<domain.model.entity.Project>"*/-->
 <div th:each="issue : ${issues}">
     <!--/*@thymesVar id="project" type="domain.models.entity.Project"*/-->
     <br/>
@@ -51,17 +49,5 @@
     <br/>
 
 </div>
-=======
-<html xmlns:th="http://www.thymeleaf.org" lang="en-US">
-<head>
-    <meta charset="UTF-8"/>
-    <title>Issues</title>
-</head>
-<body>
-<table th:action="@{issues/fetch}">
-    <!--/*@thymesVar id="issue" type="domain.models.entity.Issue"*/-->
-    <tr th:each="issue : ${issues}" th:text="${issue.getName()} + ' ' + ${issue.getId()}"></tr>
-</table>
->>>>>>> 9a6d7288ad051706a390947a7bc890f879a4ab42
 </body>
 </html>

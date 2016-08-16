@@ -23,11 +23,17 @@ public class UserController {
         this.userService = userService;
     }
 
-    @GetMapping(value = "/login")
+    @GetMapping("/login")
     public String login(Model model) {
         model.addAttribute("user", new UserDto());
 
-        return "login";
+        return "user/login";
+    }
+
+    @GetMapping("/loginFailed")
+    public String failedLogin() {
+
+        return "error/loginFailed";
     }
 
     @GetMapping("/fetch")
@@ -57,6 +63,6 @@ public class UserController {
             IllegalAccessException {
         this.userService.save(userToAdd, Role.ROLE_USER);
 
-        return "redirect:/login";
+        return "redirect:/user/login";
     }
 }

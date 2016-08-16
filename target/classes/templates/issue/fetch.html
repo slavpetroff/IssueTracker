@@ -29,7 +29,10 @@
 </div>
 
 <div>
+    <h2>Register an Issue:</h2>
+
     <form id="regForm" th:action="@{/issue/register/projectId}">
+        <strong>Please select the project you would like to link the issue for:<br/></strong>
         <select id="select">
             <option id="option"
                     th:each="project :${projects}"
@@ -37,7 +40,7 @@
                     th:value="${project.getId()}"></option>
         </select>
 
-        <button type="submit" id="button">Add new Issue:</button>
+        <button type="submit" id="button">Register</button>
     </form>
 
 

@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en-US">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Login Failed</title>
+</head>
+<body>
+<h1>
+    <strong>
+        You see this page, because the login process failed.<br/>
+        Please try to <a th:text="login" th:href="@{/user/login}"></a> again!
+    </strong>
+</h1>
+</body>
+</html>

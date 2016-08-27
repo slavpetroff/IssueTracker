@@ -2,7 +2,9 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8"/>
-    <link href="../static/css/style.css" rel='stylesheet' type='text/css'/>
+    <link th:href="@{/css/style.css}" rel='stylesheet' type='text/css'/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script th:src="@{/issues.js}"></script>
     <title>Project's Info</title>
 </head>
 <body>
@@ -14,13 +16,23 @@
     <!-- add columns for each of the states in this project -->
     <!--/*@thymesVar id="project" type="domain.models.entity.Project"*/-->
     <div class="stateCol">
-        <div class="stateColHeader"> Issue's name</div>
+        <!--/*@thymesVar id="issue" type="domain.models.entity.Issue"*/-->
+        <div class="stateColHeader" th:text="${issue.getName()}"></div>
         <hr/>
-        <div class="stateBody">Issue name</div>
-        <hr class="smallHr">
+        <div class="stateBody" th:text="${issue.getName()}"></div>
+        <hr class="smallHr"/>
         <div>
-            <p class="text">Type</p>
-            <hr class="verticalLine">
+            <p class="type" th:text="${issue.getType().getName()}"></p>
+            <select id="select">
+                <!--/*@thymesVar id="type" type="domain.models.entity.Type"*/-->
+                <option th:each="type : ${types}"
+                        th:name="${type.getName()}"
+                        th:text="${type.getName()}"
+                        th:value="${type.getId()}">
+                </option>
+            </select>
+            <hr class="verticalLine"/>
+            <p class="text">Due date</p>
         </div>
     </div>
 </div>

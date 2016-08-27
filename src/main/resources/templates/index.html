@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
 
 <head>
     <title>The Login-Animated Website Template | Home :: w3layouts</title>
     <meta charset="utf-8"/>
-    <link href="../static/css/style.css" rel='stylesheet' type='text/css'/>
+    <link th:href="@{/css/style.css}" rel='stylesheet' type='text/css'/>
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
     <script type="application/x-javascript"> addEventListener("load", function () {
         setTimeout(hideURLbar, 0);
@@ -25,7 +25,7 @@
     <h2><a href="#">Create Account</a></h2>
     <form>
         <li>
-            <input type="text" class="text" value="username" onfocus="this.value = '';"
+            <input type="text" class="type" value="username" onfocus="this.value = '';"
                    onblur="if (this.value == '') {this.value = 'User Name';}"><a href="#" class="icon user"></a>
             </input>
         </li>

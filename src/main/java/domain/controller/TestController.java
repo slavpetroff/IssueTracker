@@ -33,6 +33,7 @@ public class TestController {
     public String test(Model model) {
         model.addAttribute("issues", this.projectService.findOne(3L).getIssues());
         model.addAttribute("types", this.typeService.findAll());
+        model.addAttribute("types", this.typeService.findAll());
         return "test";
     }
 }

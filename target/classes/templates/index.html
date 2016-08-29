@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
 
 <head>
     <title>The Login-Animated Website Template | Home :: w3layouts</title>
     <meta charset="utf-8"/>
-    <link href="../static/css/style.css" rel='stylesheet' type='text/css'/>
+    <link th:href="@{/css/style.css}" rel='stylesheet' type='text/css'/>
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
     <script type="application/x-javascript"> addEventListener("load", function () {
         setTimeout(hideURLbar, 0);
@@ -39,8 +39,8 @@
 
         <div class="forgot">
             <h3><a href="#">Forgot Password?</a></h3>
-            <input type="submit" onclick="myFunction()" value="Sign In"> <a href="#"
-                                                                            class="icon arrow"></a>
+            <input type="submit" onclick="dropdownToggle()" value="Sign In"> <a href="#"
+                                                                                class="icon arrow"></a>
             </input>
         </div>
     </form>

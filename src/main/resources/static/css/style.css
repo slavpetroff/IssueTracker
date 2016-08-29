@@ -35,8 +35,6 @@ hr {
     margin-top: 2%;
     margin-left: 15%;
     display: inline-block;
-    background-color: #ddffbc;
-    color: #3c661e;
 }
 
 .verticalLine {
@@ -51,4 +49,53 @@ hr {
 .text {
     margin-top: -5%;
     margin-left: 30%;
+}
+
+/*Dropdown*/
+
+.dropbtn {
+    background-color: #ddffbc;
+    color: #3c661e;
+    padding: 2%;
+    font-size: 13px;
+    border: none;
+    cursor: pointer;
+}
+
+/* Dropdown button on hover & focus */
+.dropbtn:hover, .dropbtn:focus {
+    color: #ff6d07;
+}
+
+/* The container <div> - needed to position the dropdown content */
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+/* Dropdown Content (Hidden by Default) */
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+}
+
+/* Links inside the dropdown */
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+/* Change color of dropdown links on hover */
+.dropdown-content a:hover {
+    background-color: #f1f1f1
+}
+
+/* Show the dropdown menu (use JS to add this class to the .dropdown-content container when the user clicks on the dropdown button) */
+.show {
+    display: block;
 }

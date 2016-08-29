@@ -17,13 +17,10 @@ public class Type {
 
     private long id;
 
-    private Set<Project> projects = new HashSet<>(0);
-
     private Set<Issue> issues = new HashSet<>(0);
 
     public Type(Project... projects) {
         // TODO: extract to method/class. Duplication in State.class
-        this.projects.addAll(Arrays.asList(projects));
         this.issues.addAll(Arrays.stream(projects)
                 .flatMap(p -> p.getIssues()
                         .stream())
@@ -54,15 +51,6 @@ public class Type {
 
     public void setId(long id) {
         this.id = id;
-    }
-
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "type")
-    public Set<Project> getProjects() {
-        return projects;
-    }
-
-    public void setProjects(Set<Project> project) {
-        this.projects = project;
     }
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "type")
